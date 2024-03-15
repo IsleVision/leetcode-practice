@@ -15,7 +15,7 @@ class Solution(object):
             else:
                 break
 
-            if self.isDivisor(str1,gcd_tmp) and self.isDivisor(str2,gcd_tmp):
+            if length1%(i+1)==0 and length2%(i+1)==0 and self.isDivisor(str1,gcd_tmp) and self.isDivisor(str2,gcd_tmp):
                 gcd = gcd_tmp   
 
             i+=1
