@@ -6,9 +6,6 @@ class Solution(object):
                 dic[i]+=1
             else:
                 dic[i]=0
-        if len(set(dic.values()))==len(dic):
-            return True
-        else:
-            return False
+        return len(set(dic.values()))==len(dic)
 
 
