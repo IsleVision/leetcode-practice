@@ -6,10 +6,7 @@ class Solution(object):
                 dic[i]+=1
             else:
                 dic[i]=0
-        vs = set()
-        for key in dic:
-            vs.add(dic[key])
-        if len(vs)==len(dic):
+        if len(set(dic.values()))==len(dic):
             return True
         else:
             return False
