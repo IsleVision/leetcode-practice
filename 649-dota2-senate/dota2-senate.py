@@ -2,7 +2,7 @@ class Solution(object):
     def predictPartyVictory(self, senate):
         cnt = 0
         se_a = list(senate)
-        while len(se_a)!=abs(cnt):
+        while len(se_a)>2 and len(se_a)!=abs(cnt):
             se_a_head = se_a[0]
 
             if cnt >0 and se_a[0]=='D':
