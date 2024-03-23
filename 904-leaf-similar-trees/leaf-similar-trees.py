@@ -16,8 +16,6 @@ class Solution:
                 nd_arr +=[[nd_tmp.right,dep+1]]
             if not nd_tmp.left and not nd_tmp.right:
                 leaves += [nd_tmp.val]
-
-
         return leaves
 
 
