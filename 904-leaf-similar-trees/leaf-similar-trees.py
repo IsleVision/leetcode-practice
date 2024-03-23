@@ -17,7 +17,7 @@ class Solution:
             if not nd_tmp.left and not nd_tmp.right:
                 leaves += [nd_tmp.val]
 
-        print(leaves)
+
         return leaves
 
 
