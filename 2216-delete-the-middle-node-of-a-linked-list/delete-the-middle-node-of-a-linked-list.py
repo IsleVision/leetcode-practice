@@ -15,7 +15,7 @@ class Solution(object):
             return None
         elif length==2:
             arr[0].next=None
-            return arr[0]
+            return head
         else:
             arr[length//2-1].next = arr[length//2+1]
             return head
