@@ -6,23 +6,18 @@
 #         self.right = right
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
-        nd_arr = [[root,1]]
-
-        path = {}
-        good = 1
+        nd_arr = [[root,root.val-1,1]]
+        good = 0
         while nd_arr:
-            nd,dep = nd_arr.pop()
-            path[dep]=nd.val
-            for i in range(1,dep,1):
-                if path[i]>nd.val:
-                    break
-                if i==dep-1:
-                    good+=1
+            nd,max_v,dep = nd_arr.pop()
+            if nd.val>=max_v:
+                good +=1
+                max_v=nd.val
 
             if nd.right:
-                nd_arr += [[nd.right,dep+1]]
+                nd_arr += [[nd.right,max_v,dep+1]]
             if nd.left:
-                nd_arr +=[[nd.left,dep+1]]
+                nd_arr +=[[nd.left,max_v,dep+1]]
         
         return good
 
