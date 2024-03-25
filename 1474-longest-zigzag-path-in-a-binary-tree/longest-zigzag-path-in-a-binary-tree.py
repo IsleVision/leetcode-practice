@@ -46,8 +46,9 @@ class Solution:
         while nd_arr:
             [nd,leng_l,leng_r] = nd_arr.pop()
             max_l = max(max_l,leng_l,leng_r)
-            if nd!=None:
+            if nd!=None and nd.right!=None:
                 nd_arr += [[nd.right,leng_l-1,resolveLengthDi(nd.right,False)]]
+            if nd!=None and nd.left!=None:
                 nd_arr += [[nd.left,resolveLengthDi(nd.left,True),leng_r-1]]
 
         return max_l
