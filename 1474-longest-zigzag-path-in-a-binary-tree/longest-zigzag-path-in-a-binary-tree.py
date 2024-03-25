@@ -30,8 +30,6 @@ class Solution:
 
     def longestZigZag(self, root: Optional[TreeNode]) -> int:
         def resolveLengthDi(root:Optional[TreeNode], di:Optional[bool]=True)->int:
-            if not root:
-                return 0
             nd = root
             leng = -1
             while nd:
