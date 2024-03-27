@@ -7,16 +7,12 @@ class Solution:
                     cons |= findCon(isConnected,cons,i)
             return cons
 
-        prov = {}
         cities = set(range(len(isConnected)))
         group_num =0
         while cities:
             city = cities.pop()
             cons = findCon(isConnected,{city},city)
-            print(cons)
             if cons:
                 group_num +=1
                 cities -=cons
         return group_num
-
-
