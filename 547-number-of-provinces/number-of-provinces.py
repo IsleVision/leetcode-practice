@@ -1,6 +1,6 @@
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
-        def findCon( isConnected: List[List[int]], cons:Set[int], ci:int):
+        def findCon( isConnected: List[List[int]], cons:Set[int], ci:int)->Set[int]:
             for i in range(len(isConnected[ci])):
                 if isConnected[ci][i]==1 and i not in cons:
                     cons.add(i)
