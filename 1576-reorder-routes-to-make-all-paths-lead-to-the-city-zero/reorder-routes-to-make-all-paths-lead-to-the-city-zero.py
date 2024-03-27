@@ -1,22 +1,5 @@
 class Solution:
-    def dfs(self, adj: List[List[Tuple[int, int]]], visited: List[bool], minChange: List[int], currCity: int) -> None:
-        visited[currCity] = True
-        for neighbourCity in adj[currCity]:
-            if not visited[neighbourCity[0]]:
-                if neighbourCity[1] == 1:
-                    minChange[0] += 1
-                self.dfs(adj, visited, minChange, neighbourCity[0])
-    
     def minReorder(self, n: int, connections: List[List[int]]) -> int:
-        adj = [[] for _ in range(n)]
-        for connection in connections:
-            adj[connection[0]].append((connection[1], 1))
-            adj[connection[1]].append((connection[0], -1))
-        visited = [False] * n
-        minChange = [0]
-        self.dfs(adj, visited, minChange, 0)
-        return minChange[0]
-        
         # solution1 not efficient enough
         # def checkOrders(ci:int, excld:Set[int], connections:List[List[int]])->int:
         #     cnt = 0
@@ -75,18 +58,41 @@ class Solution:
         # nbrs ={ci:[] for ci in range(n)}
         # for con in connections:
         #     nbrs[con[0]]+=[con[1]]
-        #     nbrs[con[1]]+=[con[0]]                
+        #     nbrs[con[1]]+=[con[0]]  
 
-        # def dfs(nd:int,visited:List[int], connections:List[List[int]])->int:
-        #     chg = 0
-        #     visited += [nd]
+        # visited = {0}
+        # chg =0
+        # def dfs(nd:int):
+        #     nonlocal chg
         #     for nbr in nbrs[nd]:
         #         if nbr in visited:
         #             continue
         #         if [nbr,nd] not in connections:
         #             chg += 1
-        #         chg += dfs(nbr,visited,connections)
-        #     return chg
-        # return dfs(0,[],connections) 
+        #         visited.add(nd)
+        #         dfs(nbr)
+        # dfs(0)
+
+        # return chg 
                     
+
+        nbrs =[[] for _ in range(n)]
+
+        for con in connections:
+            nbrs[con[0]]+=[[con[1],-1]]
+            nbrs[con[1]]+=[[con[0],1]]
+        
+        visited=[True]+[False]*(n-1)
+        chg = 0
+        def dfs(ci:int):
+            nonlocal chg,visited
+            for i in range(len(nbrs[ci])):
+                if visited[nbrs[ci][i][0]]:
+                    continue
+                if nbrs[ci][i][1] ==-1:
+                    chg +=1
+                visited[nbrs[ci][i][0]]=True
+                dfs(nbrs[ci][i][0])
+        dfs(0)
+        return chg
 
