@@ -1,3 +1,4 @@
+from queue import Queue
 class Solution:
     def nearestExit(self, maze: List[List[str]], entrance: List[int]) -> int:
         # m = len(maze)
@@ -93,23 +94,38 @@ class Solution:
         #     # if c-1 >=0 and [r,c-1] not in visited and maze[r][c-1]=='.':
         #     #     path +=[[r,c-1,s+1]]
         # return -1
-        dirs = [(0,1),(0,-1),(1,0),(-1,0)]
-        entrance = (entrance[0],entrance[1])
-        q = deque([entrance])
-        visited = set()
-        visited.add(entrance)
-        step = 0
-        while q:
-            stepLength = len(q)
-            for i in range(stepLength): # here, we can use length of the deque to iterate through level by level
-                node = q.popleft()
-                if node[0] == 0 or node[0] == len(maze) -1 or node[1] == 0 or node[1] == len(maze[0]) -1 :
-                    if maze[node[0]][node[1]] == '.' and (node[0],node[1]) != entrance:
-                        return step
-                for d in dirs:
-                    newD = (node[0] + d[0], node[1] + d[1])
-                    if newD not in visited and 0<=newD[0]<len(maze) and 0<=newD[1]<len(maze[0]) and maze[newD[0]][newD[1]] == '.': # only add valid nodes to the queue!
-                        visited.add(newD) # mark it as visited, so we don't loop forever
-                        q.append(newD)
-            step += 1 # after we finish with a level, increment step by one
-        return -1
+   
+        q = Queue()
+        q.put((entrance[0] , entrance[1] , 0))
+        t = 0
+        ans =[]
+        maze[entrance[0]][entrance[1]] = "+"
+ 
+        while(not q.empty()) :
+            s = q.qsize()
+            for i in range(s) :
+                node = q.get() 
+                # boundary conditions
+                if node[0]==0 or node[0]==len(maze)-1 :
+                    if node[2]!=0 :
+                        return node[2]
+                    ans += [node[2]]
+                elif node[1] == 0 or node[1]==len(maze[0])-1 :
+                    if node[2]!=0 :
+                        return node[2]
+                    ans += [node[2]]
+                
+                dx = [0 , -1 , 0 ,1 ]
+                dy = [-1 , 0 , 1 , 0]
+
+                for ind in range(4) :
+                    x = node[0] + dx[ind]
+                    y = node[1] + dy[ind] 
+                    if x>=0 and x<len(maze) and y>=0 and y<len(maze[0]) and maze[x][y]!="+" :
+                        maze[x][y] = "+"
+                        q.put((x,y,node[2]+1))
+
+        if len(ans) == 0:
+            return -1 
+    
+        return -1 if max(ans)==0 else max(ans) 
