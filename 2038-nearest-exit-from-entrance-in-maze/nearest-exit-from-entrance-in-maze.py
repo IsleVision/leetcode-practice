@@ -1,4 +1,3 @@
-from queue import Queue
 class Solution:
     def nearestExit(self, maze: List[List[str]], entrance: List[int]) -> int:
         # m = len(maze)
@@ -78,7 +77,7 @@ class Solution:
         #     r,c,s=path.pop(0)
         #     # visited +=[[r,c]]
         #     maze[r][c]='+'
-        #     if (r!=r0 or c!=c0) and (r==0 or r==m-1 or c==0 or c==n-1):
+        #     if [r,c]!=entrance and (r==0 or r==m-1 or c==0 or c==n-1):
         #         return s
         #     for d in di:
         #         r_n = r+d[0]
@@ -94,38 +93,29 @@ class Solution:
         #     # if c-1 >=0 and [r,c-1] not in visited and maze[r][c-1]=='.':
         #     #     path +=[[r,c-1,s+1]]
         # return -1
-   
-        q = Queue()
-        q.put((entrance[0] , entrance[1] , 0))
-        t = 0
-        ans =[]
-        maze[entrance[0]][entrance[1]] = "+"
- 
-        while(not q.empty()) :
-            s = q.qsize()
-            for i in range(s) :
-                node = q.get() 
-                # boundary conditions
-                if node[0]==0 or node[0]==len(maze)-1 :
-                    if node[2]!=0 :
-                        return node[2]
-                    ans += [node[2]]
-                elif node[1] == 0 or node[1]==len(maze[0])-1 :
-                    if node[2]!=0 :
-                        return node[2]
-                    ans += [node[2]]
+
+        m = len(maze)
+        n = len(maze[0])
+        r0=entrance[0]
+        c0=entrance[1]
+        maze[r0][c0]='+'
+
+        path = deque([[r0,c0]])
+        di = [[0,1],[1,0],[0,-1],[-1,0]]
+        s = 0
+        while path:
+            for _ in range(len(path)):
+                node=path.popleft()
+                r,c = node[0],node[1]
                 
-                dx = [0 , -1 , 0 ,1 ]
-                dy = [-1 , 0 , 1 , 0]
-
-                for ind in range(4) :
-                    x = node[0] + dx[ind]
-                    y = node[1] + dy[ind] 
-                    if x>=0 and x<len(maze) and y>=0 and y<len(maze[0]) and maze[x][y]!="+" :
-                        maze[x][y] = "+"
-                        q.put((x,y,node[2]+1))
-
-        if len(ans) == 0:
-            return -1 
-    
-        return -1 if max(ans)==0 else max(ans) 
+                if  r==0 or r==m-1 or c==0 or c==n-1:
+                    if [r,c]!=entrance:
+                        return s
+                for d in di:
+                    r_n = r+d[0]
+                    c_n = c+d[1]
+                    if r_n>=0 and r_n<=m-1 and c_n>=0 and c_n<=n-1 and maze[r_n][c_n]=='.':
+                        maze[r_n][c_n]='+'
+                        path.append([r_n,c_n])
+            s+=1
+        return -1
