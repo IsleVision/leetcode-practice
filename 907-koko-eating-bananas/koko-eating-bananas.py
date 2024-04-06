@@ -15,7 +15,7 @@ class Solution:
                 times += [-(pile//-speed)]
             return sum(times)
         piles.sort()
-        l,r=1,piles[-1]
+        l,r=1,max(piles)
         while l!=r:
             speed = (l+r)//2
             if resolveTime(piles,speed)>h:
