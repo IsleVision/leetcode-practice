@@ -16,11 +16,11 @@ class Solution:
             return sum(times)
         piles.sort()
         l,r=1,piles[-1]
-        while r-l>1:
+        while l!=r:
             speed = (l+r)//2
             if resolveTime(piles,speed)>h:
                 l=speed+1
             else:
                 r=speed
-        return l if resolveTime(piles,l)<=h else r
+        return l
 
