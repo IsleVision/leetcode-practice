@@ -16,7 +16,7 @@ class Solution:
                 # times += [ceil(pile/speed)]
             # return sum(times)
             return sum(ceil(pile/speed) for pile in piles)
-        piles.sort()
+        # piles.sort()
         l,r=1,max(piles)
         while l!=r:
             speed = (l+r)//2
