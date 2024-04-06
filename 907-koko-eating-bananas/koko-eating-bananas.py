@@ -11,11 +11,11 @@ class Solution:
         # return max(min_h,min_l)
         def resolveTime(piles:List[int],speed:int)->int:
             times = []
-            # for pile in piles:
+            for pile in piles:
                 # times += [-(pile//-speed)]
-                # times += [ceil(pile/speed)]
-            # return sum(times)
-            return sum(ceil(pile/speed) for pile in piles)
+                times += [ceil(pile/speed)]
+            return sum(times)
+            # return sum(ceil(pile/speed) for pile in piles)
         # piles.sort()
         l,r=1,max(piles)
         while l!=r:
