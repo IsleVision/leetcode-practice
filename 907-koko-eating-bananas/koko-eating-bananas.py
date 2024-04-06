@@ -19,7 +19,7 @@ class Solution:
         while r-l>1:
             speed = (l+r)//2
             if resolveTime(piles,speed)>h:
-                l=speed
+                l=speed+1
             else:
                 r=speed
         return l if resolveTime(piles,l)<=h else r
