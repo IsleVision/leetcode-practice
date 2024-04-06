@@ -9,17 +9,19 @@ class Solution:
         # min_h = -(piles[-1]//-(q+1))
         # min_l = -(piles[length-r-1]//-q)
         # return max(min_h,min_l)
-        l, r = 1, max(piles)
-        
-        def isSufficientSpeed(cnt):
-            return sum(ceil(i/cnt) for i in piles) <= h
-
-        while l < r:
-            m = (l + r)//2
-            if isSufficientSpeed(m):
-                r = m
+        def resolveTime(piles:List[int],speed:int)->int:
+            times = []
+            for pile in piles:
+                # times += [-(pile//-speed)]
+                times += [ceil(pile/speed)]
+            return sum(times)
+        piles.sort()
+        l,r=1,max(piles)
+        while l!=r:
+            speed = (l+r)//2
+            if resolveTime(piles,speed)>h:
+                l=speed+1
             else:
-                l = m + 1
-                
+                r=speed
         return l
 
