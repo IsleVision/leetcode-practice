@@ -14,8 +14,6 @@ class Solution:
             for pile in piles:
                 times += [-(pile//-speed)]
             return sum(times)
-        if len(piles)==1:
-            return -(piles[0]//-h)
         piles.sort()
         l,r=1,piles[-1]
         while r-l>1:
