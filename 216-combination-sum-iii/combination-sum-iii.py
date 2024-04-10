@@ -9,7 +9,6 @@ class Solution:
                 if n<=start or n>9:
                     return
                 else:
-                    print(res)
                     ans +=[res+[n]]
                     return
             for i in range(res[-1]+1,10):
