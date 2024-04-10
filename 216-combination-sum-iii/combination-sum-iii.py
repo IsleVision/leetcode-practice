@@ -9,7 +9,8 @@ class Solution:
                 if n<=start or n>9:
                     return
                 else:
-                    ans +=[res+[n]]
+                    res +=[n]
+                    ans +=[res]
                     return
             for i in range(res[-1]+1,10):
                 search(i,k-1,n-i,res+[i])
