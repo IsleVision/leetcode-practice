@@ -6,7 +6,7 @@ class Solution:
         for pt in points:
             # if pt[0]>comm_s and pt[0]<=comm_e:
                 # comm_s=pt[0]
-            if pt[1]<comm_e:
+            if pt[1]<=comm_e:
                 comm_e=pt[1]
             if pt[0]>comm_e:
                 comm_e=pt[1]
