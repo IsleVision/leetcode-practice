@@ -3,8 +3,6 @@ class Solution:
         length = len(nums)
         if length ==1:
             return nums[0]
-        elif length==2:
-            return nums[0] if nums[0]>nums[1] else nums[1]
         DP = [0 for _ in range(length)]
         DP[0]=nums[0]
         DP[1]=nums[0] if nums[0]>nums[1] else nums[1]
