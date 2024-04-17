@@ -1,12 +1,16 @@
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
         rotten = []
+        num_fr = 0
         i_len = len(grid)
         j_len = len(grid[0])
         for i in range(i_len):
             for j in range(j_len):
                 if grid[i][j]==2:
                     rotten +=[[i,j,0]]
+                elif grid[i][j]==1:
+                    num_fr +=1
+
         di = [[1,0],[-1,0],[0,1],[0,-1]]
         time = 0
         while rotten:
@@ -18,10 +22,7 @@ class Solution:
                 if 0<=i_new<i_len and 0<=j_new<j_len and grid[i_new][j_new]==1:
                     rotten += [[i_new, j_new, t+1]]
                     grid[i_new][j_new]=2
-        for i in range(i_len):
-            for j in range(j_len):
-                if grid[i][j]==1:
-                    return -1
-        return time
+                    num_fr -=1
+        return time if num_fr==0 else -1
 
 
