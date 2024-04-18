@@ -12,8 +12,6 @@ class Solution:
             rm = costs[candidates:length-candidates]
             res = 0
             while k>0:
-                print(res)
-
                 if (costs1 and costs2 and costs1[0]<=costs2[0]) or not costs2:
                     res+=heapq.heappop(costs1)
                     if rm:
