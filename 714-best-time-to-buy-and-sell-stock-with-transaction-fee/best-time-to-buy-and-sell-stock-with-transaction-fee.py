@@ -11,7 +11,7 @@ class Solution:
                     res+=sell-buy-fee
                 buy=pr
                 sell=0
-            elif pr<=buy:
+            elif pr<buy:
                 buy=pr
             elif pr>sell:
                 sell=pr
