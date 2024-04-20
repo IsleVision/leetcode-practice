@@ -9,10 +9,11 @@ class Solution:
             if c_bit==1 and a_bit==0 and b_bit==0:
                 cnt+=1
             elif c_bit==0:
-                if a_bit==1:
-                    cnt+=1
-                if b_bit==1:
-                    cnt+=1
+                cnt+=a_bit+b_bit
+                # if a_bit==1:
+                #     cnt+=1
+                # if b_bit==1:
+                #     cnt+=1
             a=a//2
             b=b//2
             c=c//2
