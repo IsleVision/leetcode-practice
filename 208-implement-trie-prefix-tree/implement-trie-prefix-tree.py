@@ -10,7 +10,7 @@ class Trie:
     def insert(self, word: str) -> None:
         cur = self.root
         for l in word:
-            idx=ord(l)-ord('a')
+            idx = ord(l)-ord('a')
             if not cur.children[idx]:
                 cur.children[idx]=TrieNode()
             cur = cur.children[idx]
@@ -19,19 +19,19 @@ class Trie:
     def search(self, word: str) -> bool:
         cur = self.root
         for l in word:
-            idx=ord(l)-ord('a')
-            if not cur.children[idx]:
+            child=cur.children[ord(l)-ord('a')]
+            if not child:
                 return False
-            cur = cur.children[idx]
+            cur = child
         return cur.isWord
 
     def startsWith(self, prefix: str) -> bool:
         cur = self.root
         for l in prefix:
-            idx=ord(l)-ord('a')
-            if not cur.children[idx]:
+            child=cur.children[ord(l)-ord('a')]
+            if not child:
                 return False
-            cur = cur.children[idx]
+            cur = child
         return True
         
 
