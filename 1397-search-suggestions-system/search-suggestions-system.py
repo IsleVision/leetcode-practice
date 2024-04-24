@@ -2,7 +2,6 @@ class Solution:
     def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
         length = len(searchWord)
         res=[[] for _ in range(length)]
-        print(res)
         for i in range(length):
             wd = searchWord[0:i+1]
             cnt=0
