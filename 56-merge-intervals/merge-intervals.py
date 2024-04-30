@@ -7,6 +7,4 @@ class Solution:
                 res[-1]=[res[-1][0],max(res[-1][1],intervals[i][1])]
             else:
                 res+=[[intervals[i][0],intervals[i][1]]]
-        return res
-
-        
+        return res      
