@@ -7,7 +7,6 @@ class Solution:
             dif += [gas[i]-cost[i]]
             if dif[-1]>0:
                 idx=i
-        print(dif)
         if sum(dif)<0:
             return -1
         acc = dif[idx]
