@@ -9,15 +9,15 @@ class Solution:
         res =True
         arr=[]
 
-        def search(root:TreeNode, arr:List[TreeNode]):
-            nonlocal res
+        def search(root:TreeNode):
+            nonlocal res,arr
             if not root:
                 return
-            search(root.left,arr)
+            search(root.left)
             if arr and root.val<=arr[-1]:
                 res= False
             arr += [root.val]
-            search(root.right,arr)
+            search(root.right)
         
-        search(root,arr)
+        search(root)
         return res
