@@ -20,7 +20,6 @@ class Solution:
                 ary = arr[0].copy()
                 for i in range(len(pathDic[nd])):
                     nd_nx = pathDic[nd][i]
-                    # print(arr,ary)
                     if nd_nx in ary:
                         return False
                     elif i==0:
