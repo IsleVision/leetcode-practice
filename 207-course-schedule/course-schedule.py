@@ -17,7 +17,7 @@ class Solution:
             if nd not in pathDic or not pathDic[nd]:
                 arr.pop(0)
             else:
-                ary = arr[0]+[]
+                ary = arr[0].copy()
                 for i in range(len(pathDic[nd])):
                     nd_nx = pathDic[nd][i]
                     # print(arr,ary)
