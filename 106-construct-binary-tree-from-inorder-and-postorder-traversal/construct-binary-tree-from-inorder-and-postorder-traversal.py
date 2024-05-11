@@ -19,5 +19,5 @@ class Solution:
             nd.right = self.buildTree(inorder[1:],postorder[:-1])
         else:
             nd.left = self.buildTree(inorder[:idx],postorder[:idx])
-            nd.right = self.buildTree(inorder[idx+1:],postorder[idx:-1])
+            nd.right= self.buildTree(inorder[idx+1:],postorder[idx:-1])
         return nd
