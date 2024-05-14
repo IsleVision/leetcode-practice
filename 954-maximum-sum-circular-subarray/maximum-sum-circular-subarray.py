@@ -12,10 +12,8 @@ class Solution:
             max_res=max(max_v,max_res)
             min_v=min(min_v+e,e) 
             min_res=min(min_v,min_res)
-            print(max_v,max_res,min_v,min_res)
         if total==min_res and max_res==0:
             return max_n
-
         return max(total-min_res,max_res)
 
             
