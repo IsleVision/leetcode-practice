@@ -28,10 +28,4 @@ class Solution:
             nds+=[[nd.left,lvl+1],[nd.right,lvl+1]]
         pre_nd.next=None
         return root
-    
-
-
-
-
-
         
