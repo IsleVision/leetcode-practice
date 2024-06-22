@@ -9,19 +9,21 @@ class Node:
 from typing import Optional
 class Solution:
     def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
-        if not node: 
-            return node
-        q, clones = deque([node]), {node.val: Node(node.val, [])}
-        while q:
-            cur = q.popleft() 
-            cur_clone = clones[cur.val]            
+        if not node:
+            return None
+        root = Node(1,[])
+        arr = [(node,root)]
+        visited = {node:root}
+        while arr:
+            nd,nd_c = arr.pop()
+            for nd_nei in nd.neighbors:
+                if nd_nei not in visited:
+                    nd_c_nei = Node(nd_nei.val,[])
+                    visited[nd_nei] = nd_c_nei
+                    arr += [(nd_nei,nd_c_nei)]
+                else:
+                    nd_c_nei = visited[nd_nei]
+                nd_c.neighbors += [nd_c_nei] 
+        return root
 
-            for ngbr in cur.neighbors:
-                if ngbr.val not in clones:
-                    clones[ngbr.val] = Node(ngbr.val, [])
-                    q.append(ngbr)
-                    
-                cur_clone.neighbors.append(clones[ngbr.val])
-                
-        return clones[node.val]
 
