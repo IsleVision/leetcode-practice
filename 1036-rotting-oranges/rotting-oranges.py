@@ -24,5 +24,3 @@ class Solution:
                     grid[i_new][j_new]=2
                     num_fr -=1
         return time if num_fr==0 else -1
-
-
