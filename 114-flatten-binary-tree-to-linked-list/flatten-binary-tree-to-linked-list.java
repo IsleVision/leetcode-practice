@@ -31,7 +31,7 @@ class Solution {
         // flatten(rightNode);
 
         // TreeNode child = new TreeNode();
-        curNode = new TreeNode(root.val);
+        curNode = new TreeNode();
         head = curNode;
         preOrd(root);
         root.left = null;
