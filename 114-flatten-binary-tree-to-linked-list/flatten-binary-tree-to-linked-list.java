@@ -45,11 +45,10 @@ class Solution {
         if(root == null){
             return;
         }
-        TreeNode rightNode = root.right;
         curNode.right = new TreeNode(root.val);
         curNode = curNode.right;
         preOrd(root.left);
-        preOrd(rightNode);
+        preOrd(root.right);
     }
 
 }
