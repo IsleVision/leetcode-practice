@@ -48,7 +48,6 @@ class Solution {
         TreeNode rightNode = root.right;
         curNode.right = new TreeNode(root.val);
         curNode = curNode.right;
-        System.out.println(root.val + " " + curNode.val);
         preOrd(root.left);
         preOrd(rightNode);
     }
