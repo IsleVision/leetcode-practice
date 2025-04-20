@@ -15,40 +15,49 @@
  */
 class Solution {
 
-    private TreeNode curNode, head;
+    // private TreeNode curNode, head;
+    private TreeNode tail;
+
     
 
     public void flatten(TreeNode root) {
+        // if(root==null){
+        //     return;
+        // }
+        // curNode = new TreeNode();
+        // head = curNode;
+        // preOrd(root);
+        // root.left = null;
+        // root.right = head.right.right;  
+
+        revPostOrd(root);
+
+
+    }
+
+    private void revPostOrd(TreeNode root){
         if(root==null){
             return;
         }
-        // TreeNode rightNode = root.right;
-        // if(root.left!=null){
-        //     root.right=new TreeNode(root.left.val);
-        // }
-
-        // flatten(root.left);
-        // flatten(rightNode);
-
-        // TreeNode child = new TreeNode();
-        curNode = new TreeNode();
-        head = curNode;
-        preOrd(root);
-        root.left = null;
-        root.right = head.right.right;  
+        revPostOrd(root.right);
+        revPostOrd(root.left);
+        root.left=null;
+        root.right=tail;
+        tail=root;
 
     }
 
 
 
-    private void preOrd(TreeNode root){
-        if(root == null){
-            return;
-        }
-        curNode.right = new TreeNode(root.val);
-        curNode = curNode.right;
-        preOrd(root.left);
-        preOrd(root.right);
-    }
+
+    // private void preOrd(TreeNode root){
+    //     if(root == null){
+    //         return;
+    //     }
+    //     curNode.right = new TreeNode(root.val);
+    //     curNode = curNode.right;
+    //     preOrd(root.left);
+    //     preOrd(root.right);
+    // }
 
 }
