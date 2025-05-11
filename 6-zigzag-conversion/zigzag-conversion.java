@@ -5,8 +5,6 @@ class Solution {
         String dir = "acc";
         for(int i=0; i<s.length(); i++){
             String sub = s.substring(i,i+1);
-            // System.out.println(alIdx);
-            // System.out.println(sub);
             if(alIdx>=al.size() && alIdx<=numRows){
                 al.add(new LinkedList<String>(Arrays.asList(sub)));
             }
