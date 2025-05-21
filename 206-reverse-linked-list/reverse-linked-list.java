@@ -10,14 +10,29 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-        if (head == null || head.next == null) {
+        if(head==null){
+            return null;
+        }
+        else if(head.next==null){
             return head;
         }
-
-        ListNode newHead = reverseList(head.next);
-        head.next.next = head;
-        head.next = null;
-        return newHead;        
+        else{
+            ListNode headNode = recurReverse(head, head.next);
+            head.next = null;
+            return headNode;
+        }
     }
- 
+
+    public ListNode recurReverse(ListNode head, ListNode next){
+        System.out.println(head.val);
+        if(next.next==null){
+            head.next=null;
+            next.next=head;
+            return next;
+        }
+        ListNode headNode = recurReverse(head.next, next.next);
+        head.next=null;
+        next.next=head;
+        return headNode;
+    }
 }
