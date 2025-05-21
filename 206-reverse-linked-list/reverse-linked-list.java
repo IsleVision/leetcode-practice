@@ -24,7 +24,6 @@ class Solution {
     }
 
     public ListNode recurReverse(ListNode head, ListNode next){
-        System.out.println(head.val);
         if(next.next==null){
             head.next=null;
             next.next=head;
